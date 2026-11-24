@@ -13,6 +13,8 @@ weights and 2n points for a centrally symmetric measure not supported on a hyper
 pairs. We also show that the
 corresponding characterization of the cube fails in every dimension n >= 3.
 
+Archived at Zenodo: https://doi.org/10.5281/zenodo.24516799
+
 ## Contents
 
 - `paper/main.tex`, `paper/main.pdf`: the paper.
