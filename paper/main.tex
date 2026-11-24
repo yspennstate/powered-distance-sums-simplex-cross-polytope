@@ -1,0 +1,240 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xurl}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\setlength{\emergencystretch}{3em}
+
+\title{Constant powered-distance sums characterize the regular simplex and the cross-polytope}
+\author{Yitzchak Shmalo$^{\,a}$\thanks{Email address:
+\texttt{yitzchak.shmalo@gmail.com} (Yitzchak Shmalo).}\\
+{\small $^{a}$Einstein Institute of Mathematics, The Hebrew University of
+Jerusalem, Givat Ram,}\\
+{\small Jerusalem, Israel}}
+\date{November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $n+1$ points of $\mathbb{R}^n$ be such that the sums of the second and fourth powers of their distances to a point $M$ do not depend on $M$ as $M$ runs over a sphere. Nikolov and Rafailov conjectured that the points are then the vertices of a regular simplex. They made the same conjecture for $2n$ distinct points, the powers $2$, $4$ and $6$, and the cross-polytope. We prove both conjectures in every dimension, also with positive weights, and show that for $n+1$ points the fourth power alone forces a regular simplex. For the cross-polytope we show that a degree-$3$ cubature formula with positive weights and $2n$ points for a centrally symmetric measure not supported on a hyperplane has its points in antipodal pairs. We also show that the corresponding characterization of the cube fails in every dimension $n\ge3$.
+\end{abstract}
+
+\noindent\textit{Keywords:} sums of powered distances, regular simplex, cross-polytope, Euclidean design, cubature formula.
+
+\noindent\textit{2020 Mathematics Subject Classification:} 52B11, 05B30, 65D32.
+
+\section{Introduction}\label{sec:intro}
+
+For points $A_1,\dots,A_N$ in $\mathbb{R}^n$ and $\lambda>0$ let
+\[
+S_\lambda(M)=\sum_{i=1}^N |MA_i|^\lambda .
+\]
+Nikolov and Rafailov \cite{NR} studied the extrema of $S_\lambda$ on a sphere when the $A_i$ are the vertices of a regular polygon, simplex, cross-polytope or cube. For these configurations $S_\lambda$ is constant on every sphere concentric with the polytope for small even values of $\lambda$, and they asked whether this property characterizes the polytope. We use the numbering of the arXiv version, arXiv:1211.2975v1, of \cite{NR}; there the questions are the following.
+
+\begin{itemize}
+\item[\textbf{(C2)}] Let $A_1,\dots,A_{n+1}\in\mathbb{R}^n$, and suppose there is a sphere $\Gamma$ on which $S_2$ and $S_4$ are constant. Then $A_1,\dots,A_{n+1}$ are the vertices of a regular simplex \cite[Conjecture~2]{NR}.
+\item[\textbf{(C3)}] Let $A_1,\dots,A_{2n}\in\mathbb{R}^n$ be distinct, and suppose there is a sphere $\Gamma$ of dimension $n-1$ on which $S_2$, $S_4$ and $S_6$ are constant. Then $A_1,\dots,A_{2n}$ are the vertices of an $n$-dimensional cross-polytope \cite[Conjecture~3]{NR}. (The sum in \cite{NR} is printed with upper limit $n+1$; the sum over all $2n$ points is meant.)
+\item[\textbf{(Q)}] Is the same true for $2^n$ distinct points and the cube? Nikolov and Rafailov observe that it is not when $n\ge4$ is a power of two, by taking unions of rotated cross-polytopes, and record that no counterexample was known in other dimensions \cite[Section~6.3]{NR}.
+\end{itemize}
+
+They proved (C2) for $n=2,3$ and (C3) for $n=2$, and that three distinct points of the plane for which $S_4$ alone is constant on a circle form an equilateral triangle \cite[Proposition~2]{NR}. The points $A_i$ are not assumed to lie on $\Gamma$, nor on any common sphere. We answer all three questions. The paper is organized as follows.
+\begin{center}
+\begin{tabular}{lp{9.2cm}l}
+\toprule
+Section & Content & Uses\\
+\midrule
+\ref{sec:moments} & the hypotheses as moment conditions (Lemma~\ref{lem:moments}) & --\\
+\ref{sec:simplex} & Theorems~\ref{thm:simplex} and~\ref{thm:fourth}; unequal weights (Remark~\ref{rem:weights}) & Section~\ref{sec:moments}\\
+\ref{sec:cross} & antipodal pairs (Lemma~\ref{lem:antipodal}) and Theorem~\ref{thm:cross} & Section~\ref{sec:moments}\\
+\ref{sec:cube} & a negative answer to (Q) (Proposition~\ref{prop:cube}) & Section~\ref{sec:moments}\\
+\ref{sec:comp} & the computer checks & all\\
+\bottomrule
+\end{tabular}
+\end{center}
+The symbols are listed in Appendix~\ref{app:notation}. Throughout, $\Gamma$ has centre $O$ and radius $R>0$, and we place $O$ at the origin; $a_i$ denotes the position vector of $A_i$. We allow positive weights $w_i$ and write $S_\lambda^w(M)=\sum_i w_i|MA_i|^\lambda$.
+
+\begin{theorem}\label{thm:simplex}
+Let $a_1,\dots,a_{n+1}\in\mathbb{R}^n$ and $w_1,\dots,w_{n+1}>0$, and suppose $S^w_2$ and $S^w_4$ are constant on the sphere $\Gamma$ of radius $R$ centred at the origin. Then either all $a_i$ are $0$, or the weights are equal and $a_1,\dots,a_{n+1}$ are the vertices of a regular simplex centred at the origin.
+\end{theorem}
+
+\begin{theorem}\label{thm:fourth}
+Let $a_1,\dots,a_{n+1}\in\mathbb{R}^n$, and suppose $S_4$ (with equal weights) is constant on $\Gamma$. Then either all $a_i$ are $0$, or $a_1,\dots,a_{n+1}$ are the vertices of a regular simplex centred at the origin.
+\end{theorem}
+
+\begin{theorem}\label{thm:cross}
+Let $a_1,\dots,a_{2n}\in\mathbb{R}^n$ and $w_1,\dots,w_{2n}>0$, and suppose $S^w_2$, $S^w_4$ and $S^w_6$ are constant on $\Gamma$. Then either all $a_i$ are $0$, or the weights are equal and $a_1,\dots,a_{2n}$ are the vertices of a regular cross-polytope centred at the origin.
+\end{theorem}
+
+In particular (C3) holds in every dimension, and (C2) holds in every dimension whenever the points are not all at the centre of $\Gamma$; in (C3) the distinctness of the points is needed only to exclude that configuration. The converses hold: the vertices of a regular simplex (cross-polytope) centred at $O$ make $S_2,S_4$ (respectively $S_2,S_4,S_6$) constant on every sphere centred at $O$ \cite{NR}. Theorem~\ref{thm:fourth} does not extend to unequal weights; see Remark~\ref{rem:weights}. For (Q) we give, in every dimension $n\ge3$, a set of $2^n$ distinct points on a sphere, not centrally symmetric and so not the vertex set of a cube, for which $S_2$, $S_4$ and $S_6$ are constant on every sphere centred at its centroid (Proposition~\ref{prop:cube}).
+
+\paragraph{Relation to design theory.}
+After the expansion of Section~\ref{sec:moments}, the hypotheses become moment conditions of the kind studied for Euclidean designs, the weighted point sets of $\mathbb{R}^n$ that integrate polynomials of bounded degree exactly over a union of concentric spheres \cite{NeumaierSeidel}. Theorem~\ref{thm:simplex} and Theorem~\ref{thm:fourth} are then statements about Euclidean $2$-designs with $n+1$ points, which are tight; tight Euclidean $2$-designs are described by Bannai, Bannai and Suprijanto \cite[Theorem~5.1]{BBS} (theorem numbers of \cite{BBS} follow arXiv:1708.05524), and the hypotheses of Theorems~\ref{thm:simplex} and~\ref{thm:fourth} select the regular simplex among them. Antipodal tight Euclidean $3$-designs are classified by Et.~Bannai \cite[Theorem~1.5]{EtBannai}; tightness for odd strength is defined for antipodal designs only, and the step needed for Theorem~\ref{thm:cross} is Lemma~\ref{lem:antipodal}, which shows that the hypothesis forces antipodality. In the language of cubature, Lemma~\ref{lem:antipodal} says that a cubature formula of degree $3$ with positive weights and $2n$ points for a centrally symmetric measure on $\mathbb{R}^n$ not supported on a hyperplane has its points in $n$ antipodal pairs with equal weights in each pair; $2n$ is the least number of points of such a formula, by M\"oller's lower bound for centrally symmetric measures \cite{Moller} (see \cite[Section~2]{HinrichsNovak} for its statement). We give short self-contained proofs of all three theorems.
+
+\section{The moment conditions}\label{sec:moments}
+
+For $u\in\Gamma$ we have $|u|=R$ and $|u-a|^2=R^2+|a|^2-2\,u\cdot a$. A polynomial $f$ on $\mathbb{R}^n$ is constant on $\Gamma$ exactly when its odd part $\frac12(f(u)-f(-u))$ vanishes on $\Gamma$ and its even part is constant on $\Gamma$. We use two elementary facts. A quadratic form $u^{\top}Pu$ with $P$ symmetric is constant on $\Gamma$ if and only if $P$ is a multiple of the identity. A homogeneous polynomial vanishing on $\Gamma$ vanishes identically.
+
+Write $\rho_i=R^2+|a_i|^2$ and $T(u)=\sum_i w_i(u\cdot a_i)^3$.
+
+\begin{lemma}\label{lem:moments}
+Let $w_i>0$.
+\begin{enumerate}
+\item[(a)] $S^w_2$ is constant on $\Gamma$ if and only if $\sum_i w_ia_i=0$.
+\item[(b)] $S^w_4$ is constant on $\Gamma$ if and only if $\sum_i w_i\rho_ia_i=0$ and $\sum_iw_ia_ia_i^{\top}=\gamma I$ for some $\gamma$.
+\item[(c)] If $S^w_2$, $S^w_4$ and $S^w_6$ are constant on $\Gamma$, then, with $\gamma,\eta$ real,
+\[
+\sum_i w_ia_i=0,\quad \sum_i w_i|a_i|^2a_i=0,\quad \sum_iw_ia_ia_i^{\top}=\gamma I,\quad \sum_iw_i|a_i|^2a_ia_i^{\top}=\eta I,\quad T\equiv0 .
+\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $S^w_2(u)=\sum_iw_i\rho_i-2\,u\cdot\sum_iw_ia_i$, and a linear function is constant on $\Gamma$ only if it is zero.
+
+(b) $S^w_4(u)=\sum_iw_i\rho_i^2-4\,u\cdot\sum_iw_i\rho_ia_i+4\,u^{\top}\bigl(\sum_iw_ia_ia_i^{\top}\bigr)u$. The odd part is the linear term and the even part is the constant plus the quadratic form.
+
+(c) By (a) and (b), $\sum w_ia_i=0$ and then $\sum w_i|a_i|^2a_i=\sum w_i\rho_ia_i-R^2\sum w_ia_i=0$, and $\sum w_ia_ia_i^{\top}=\gamma I$. Next
+\[
+S^w_6(u)=\sum_iw_i\rho_i^3-6\sum_iw_i\rho_i^2(u\cdot a_i)+12\sum_iw_i\rho_i(u\cdot a_i)^2-8\,T(u).
+\]
+The even part is constant on $\Gamma$, so the matrix $\sum w_i\rho_ia_ia_i^{\top}=R^2\gamma I+\sum w_i|a_i|^2a_ia_i^{\top}$ is a multiple of $I$, which gives the fourth condition. Let $c=\sum_iw_i\rho_i^2a_i$. The odd part, $-6\,c\cdot u-8T(u)$, vanishes on $\Gamma$; since $c\cdot u=R^{-2}|u|^2(c\cdot u)$ there, the cubic form $P(u)=6R^{-2}|u|^2(c\cdot u)+8T(u)$ vanishes on $\Gamma$ and hence identically. Apply the Laplacian $\Delta=\sum_k\partial^2/\partial u_k^2$: $\Delta T(u)=6\sum_iw_i|a_i|^2(u\cdot a_i)=0$ by the second condition, while $\Delta\bigl(|u|^2(c\cdot u)\bigr)=(2n+4)\,c\cdot u$. Hence $c=0$, and then $T\equiv0$.
+\end{proof}
+
+The conditions in (c) are not all independent of each other, but this list is what the proofs use. Note also that $\gamma=\frac1n\sum_iw_i|a_i|^2\ge0$, with equality only when every $a_i$ is $0$; when $\gamma>0$ the $a_i$ span $\mathbb{R}^n$.
+
+\section{The simplex}\label{sec:simplex}
+
+\begin{proof}[Proof of Theorem~\ref{thm:simplex}]
+Normalize $\sum_iw_i=1$. By Lemma~\ref{lem:moments}, $\sum w_ia_i=0$, $\sum w_i|a_i|^2a_i=0$ and $\sum w_ia_ia_i^{\top}=\gamma I$. Suppose $\gamma>0$. Let $B$ be the $n\times(n+1)$ matrix with columns $\sqrt{w_i}\,a_i$. Then $BB^{\top}=\gamma I$, so $B$ has rank $n$ and its kernel is one-dimensional. The vectors $(\sqrt{w_i})_i$ and $(\sqrt{w_i}|a_i|^2)_i$ both lie in the kernel, and the first is nonzero, so $|a_i|^2=r^2$ for all $i$ and some $r>0$. Let $s=(\sqrt{w_i})_i$, a unit vector spanning $\ker B$. The symmetric matrix $B^{\top}B$ kills $s$, and on the orthogonal complement $s^{\perp}$ of $s$, which is the row space of $B$, it acts as $\gamma$, because $B^{\top}B\,B^{\top}=\gamma B^{\top}$. Hence
+\[
+B^{\top}B=\gamma\,(I-ss^{\top}),\qquad\text{that is,}\qquad \sqrt{w_iw_j}\;a_i\cdot a_j=\gamma(\delta_{ij}-\sqrt{w_iw_j}).
+\]
+On the diagonal, $w_ir^2=\gamma(1-w_i)$, so $w_i=\gamma/(r^2+\gamma)$ is the same for all $i$, and the weights are equal. Off the diagonal, $a_i\cdot a_j=-\gamma$ for $i\ne j$. All the $a_i$ have the same length and all pairwise inner products are equal, so they are the vertices of a regular simplex centred at the origin.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:fourth}]
+By Lemma~\ref{lem:moments}(b) with $w_i=1$, $\sum_i\rho_ia_i=0$ and $\sum_ia_ia_i^{\top}=\gamma I$. Suppose $\gamma>0$, and let $B$ have columns $a_i$. As before $\ker B$ is one-dimensional; it contains the vector $(\rho_i)_i$, all of whose entries are positive. Let $s=(\rho_i)_i/V^{1/2}$ with $V=\sum_j\rho_j^2$. The argument above gives $B^{\top}B=\gamma(I-ss^{\top})$, and the diagonal entries read
+\[
+|a_i|^2+\gamma\,\frac{(R^2+|a_i|^2)^2}{V}=\gamma\qquad(i=1,\dots,n+1).
+\]
+The function $x\mapsto x+\gamma(R^2+x)^2/V$ is strictly increasing on $[0,\infty)$, so all $|a_i|^2$ are equal. Then all $\rho_i$ are equal, $s_i=(n+1)^{-1/2}$, and the off-diagonal entries give $a_i\cdot a_j=-\gamma/(n+1)$ for $i\ne j$. So the $a_i$ form a regular simplex centred at the origin, and $\sum_i a_i=0$.
+\end{proof}
+
+\begin{remark}\label{rem:weights}
+With unequal weights the fourth power alone does not suffice. Lemma~\ref{lem:moments}(b) asks only that $\sum w_i\rho_ia_i=0$ and $\sum w_ia_ia_i^{\top}=\gamma I$. Given any radii $r_1,\dots,r_{n+1}>0$ and $R=1$, put $W_i=1+r_i^2$ and choose $t>0$ with $\sum_iW_i^2/(W_i^2+tr_i^2)=1$, which is possible because the left side decreases from $n+1$ to $0$. Let $b_i=W_i/(W_i^2+tr_i^2)^{1/2}$, so that $b=(b_i)$ is a unit vector, and $\lambda_i=K/(W_i^2+tr_i^2)$ with $K$ chosen so that $\sum\lambda_i=1$. Then the vectors $\sqrt{K/(t\lambda_i)}\,(e_i-b_ib)$ lie in the hyperplane $b^{\perp}\cong\mathbb{R}^n$ of $\mathbb{R}^{n+1}$, have lengths $r_i$, and with weights $\lambda_i$ satisfy both conditions. So the weighted sum of fourth powers is constant on the unit sphere for a simplex whose vertices have arbitrary distances from the centre. In general the two conditions say that the points $a_i/\rho_i$ with weights $w_i\rho_i^2$ form a Euclidean $2$-design with $n+1$ points, and such designs are described in \cite[Theorem~5.1]{BBS}.
+\end{remark}
+
+\section{The cross-polytope}\label{sec:cross}
+
+\begin{lemma}\label{lem:antipodal}
+Let $a_1,\dots,a_{2n}\in\mathbb{R}^n$ with weights $w_i>0$, and suppose $\sum_iw_ia_ia_i^{\top}$ is positive definite and $T(u)=\sum_iw_i(u\cdot a_i)^3$ vanishes identically. Then no $a_i$ is $0$, and the $a_i$ lie on $n$ linearly independent lines through the origin, each line containing exactly one $a_i$ on each side of the origin. If moreover $\sum_iw_ia_i=0$, the two points on each line have the same length and the same weight.
+\end{lemma}
+
+\begin{proof}
+Choose $t$ with $t\cdot a_i\ne0$ for every nonzero $a_i$. The Hessian matrix of $T$ at the point $t$ is $6\sum_iw_i(t\cdot a_i)\,a_ia_i^{\top}$, and it vanishes because $T\equiv0$; that is,
+\[
+P_+:=\sum_{t\cdot a_i>0}w_i(t\cdot a_i)\,a_ia_i^{\top}=\sum_{t\cdot a_i<0}w_i|t\cdot a_i|\,a_ia_i^{\top}=:P_- .
+\]
+For $x\ne0$, $x^{\top}(P_++P_-)x=\sum_iw_i|t\cdot a_i|(a_i\cdot x)^2>0$, since the nonzero $a_i$ span $\mathbb{R}^n$. So $P_+=P_-=\frac12(P_++P_-)$ is positive definite and has rank $n$. A sum of $m$ rank-one matrices has rank at most $m$, so each of the open half-spaces $\{t\cdot x>0\}$ and $\{t\cdot x<0\}$ contains at least $n$ of the points. There are $2n$ points, so each half-space contains exactly $n$ of them and none is $0$. This holds for every $t$ not orthogonal to any $a_i$.
+
+Let $\ell$ be a line through the origin containing some $a_k$. In the hyperplane $H=a_k^{\perp}$ choose $t_0$ with $t_0\cdot a_i\ne0$ for every $a_i\notin\ell$; this is possible because for $a_i\notin\ell$ the set $a_i^{\perp}\cap H$ is a proper subspace of $H$, and $H$ is not a finite union of proper subspaces (when $n=1$ there is only one line and nothing to choose). For small $\varepsilon>0$ the vectors $t_\pm=t_0\pm\varepsilon a_k$ are orthogonal to no $a_i$, they give every $a_i\notin\ell$ the same sign as $t_0$ does, and they give opposite signs to the points of $\ell$. Counting the points in $\{t_+\cdot x>0\}$ and in $\{t_-\cdot x>0\}$, both equal to $n$, shows that the two open rays of $\ell$ contain equally many points. Thus every line through the origin that contains a point contains at least two. The points span $\mathbb{R}^n$, so they lie on at least $n$ lines, and there are $2n$ points; hence there are exactly $n$ lines, with one point on each ray, and their directions are linearly independent.
+
+For the last statement write the points as $b_ju_j$ and $-c_ju_j$ with $u_1,\dots,u_n$ linearly independent unit vectors, $b_j,c_j>0$, and weights $\beta_j,\beta_j'$ ($j=1,\dots,n$). From $\sum w_ia_i=0$ and the independence of the $u_j$, $\beta_jb_j=\beta_j'c_j$. Let $v_1,\dots,v_n$ be the dual basis, $v_k\cdot u_j=\delta_{jk}$. Then $0=T(v_j)=\beta_jb_j^3-\beta_j'c_j^3$. Dividing gives $b_j^2=c_j^2$, so $b_j=c_j$ and $\beta_j=\beta_j'$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:cross}]
+By Lemma~\ref{lem:moments}(c) all five conditions hold. If $\gamma=0$ every $a_i$ is $0$. Otherwise Lemma~\ref{lem:antipodal} applies, with $\sum w_ia_i=0$, so the points are $\pm b_ju_j$ with $u_1,\dots,u_n$ linearly independent unit vectors, $b_j>0$, and weight $\beta_j$ on both points $\pm b_ju_j$. Now
+\[
+\sum_iw_ia_ia_i^{\top}=\sum_j2\beta_jb_j^2\,u_ju_j^{\top}=\gamma I .
+\]
+The matrix $U$ with columns $(2\beta_j)^{1/2}b_ju_j$ satisfies $UU^{\top}=\gamma I$, so $\gamma^{-1/2}U$ is orthogonal: the $u_j$ are orthonormal and $2\beta_jb_j^2=\gamma$. The fourth condition gives $\sum_j2\beta_jb_j^4u_ju_j^{\top}=\eta I$, so $2\beta_jb_j^4=\eta$. Hence $b_j^2=\eta/\gamma$ for all $j$, and then $\beta_j=\gamma^2/(2\eta)$ for all $j$. The points are $\pm b\,u_j$ with $b=(\eta/\gamma)^{1/2}$, the vertices of a regular cross-polytope centred at the origin, and all weights are equal.
+\end{proof}
+
+With equal weights the fourth condition is not needed: $2\beta b_j^2=\gamma$ already gives equal radii. The configurations $\{\pm r_ju_j\}$ with weights $\gamma/(2r_j^2)$ and orthonormal $u_j$, which satisfy the first three conditions of Lemma~\ref{lem:moments}(c) and $T\equiv0$ for any radii $r_j$, are the antipodal tight Euclidean $3$-designs of \cite[Theorem~1.5]{EtBannai}; the constancy of $S^w_6$ is what fixes the radii.
+
+\section{The cube}\label{sec:cube}
+
+Let $a_1,\dots,a_N$ have the same length, with $\sum a_i=0$, $\sum a_ia_i^{\top}=\gamma I$ and $T\equiv0$; up to scaling these are the spherical $3$-designs of \cite{DGS}. Then $S_2$, $S_4$ and $S_6$ are constant on every sphere centred at the origin. Indeed, in the expansions in the proof of Lemma~\ref{lem:moments} all $\rho_i$ are equal, so the odd parts vanish by $\sum a_i=0$ and $T\equiv0$, and the even parts are constants plus multiples of $u^{\top}\bigl(\sum a_ia_i^{\top}\bigr)u=\gamma|u|^2$. The vertices of a cube form one, but there are many others with $2^n$ points: any set $\{\pm v_1,\dots,\pm v_{2^{n-1}}\}$ in which $v_1,\dots,v_{2^{n-1}}$ are unit vectors with $\sum_kv_kv_k^{\top}$ a multiple of $I$ (a unit-norm tight frame) qualifies, and Bajnok \cite{Bajnok} constructs spherical $3$-designs in $\mathbb{R}^n$ of every even size at least $2n$ when $n\ge6$, and of many sizes in lower dimensions. The following example is explicit and rational, and it is not centrally symmetric.
+
+\begin{proposition}\label{prop:cube}
+Let $n\ge3$, $E=\{-1,1\}^{n-1}$, and let $Q$ be the rotation of $\mathbb{R}^{n-1}$ acting on the first two coordinates by the matrix $\begin{pmatrix}3/5&-4/5\\4/5&3/5\end{pmatrix}$ and fixing the others. The set
+\[
+X=\{(v,1):v\in E\}\cup\{(Qv,-1):v\in E\}\subset\mathbb{R}^n
+\]
+consists of $2^n$ distinct points of length $\sqrt n$, it is not centrally symmetric, and $S_2$, $S_4$, $S_6$ for $X$ are constant on every sphere centred at the origin.
+\end{proposition}
+
+\begin{proof}
+The two layers are disjoint, and $Q$ is injective, so the points are distinct; each has length $\sqrt n$. Write a point as $(h,z)$ with $z=\pm1$. In each layer the horizontal parts form a centrally symmetric set ($E$ or $QE$), with $\sum h=0$, $\sum hh^{\top}=2^{n-1}I$ (as $Q$ is orthogonal) and vanishing third-moment tensor $\sum h\otimes h\otimes h=0$ (here $\otimes$ is the tensor product). Summing over both layers, $\sum(h,z)=0$; the second moment has blocks $\sum hh^{\top}=2^nI$, $\sum hz=0$ and $\sum z^2=2^n$, so it is $2^nI$; and in the third moment the terms $hhh$ and $h z^2$ vanish in each layer, $\sum z^3=2^{n-1}-2^{n-1}=0$, and $\sum hh^{\top}z=2^{n-1}I-2^{n-1}I=0$. So $X$ satisfies the conditions above. The only possible centre of symmetry of $X$ is its centroid $0$, and $-X=X$ would require $-QE=E$, that is $QE=E$; but $Q(1,1,\dots)=(-1/5,7/5,\dots)\notin E$.
+\end{proof}
+
+For $n=3$ the set $X$ is a twisted cube: two squares at heights $\pm1$, one turned against the other by the angle $\arctan(4/3)$. A cube is centrally symmetric, so $X$ is not the vertex set of a cube, and (Q) has a negative answer in every dimension $n\ge3$. In the plane, four points satisfying the hypothesis form a square by Theorem~\ref{thm:cross} with $n=2$.
+
+\section{Computations}\label{sec:comp}
+The identities in Proposition~\ref{prop:cube} were checked in exact rational arithmetic for $n=3,4,5$, together with the constancy of $S_2,S_4,S_6$ at rational points of four concentric spheres and the non-constancy of $S_8$. As an independent test of Theorems~\ref{thm:simplex}--\ref{thm:cross}, least-squares searches over all configurations of $n+1$ points ($n=3,4,5$; the powers $2,4$, and $4$ alone) and of $2n$ points ($n=3,4$; the powers $2,4,6$), from random starting points, found no configuration with vanishing residual other than the regular simplex and the cross-polytope; for $2n=8$ points in $\mathbb{R}^4$ no start reached a residual below $10^{-9}$, so that case tests nothing. The script and its output are in the repository listed below.
+
+\section*{Credits}
+The questions (C2), (C3) and (Q), the cases $n=2,3$ of (C2), the case $n=2$ of (C3), the case $n=2$ of Theorem~\ref{thm:fourth}, and the examples in dimensions that are powers of two are due to Nikolov and Rafailov \cite{NR}. Euclidean designs are due to Neumaier and Seidel \cite{NeumaierSeidel}; the classification of tight Euclidean $2$-designs used in Remark~\ref{rem:weights} is due to Bannai, Bannai and Suprijanto \cite{BBS}, and that of antipodal tight Euclidean $3$-designs to Et.~Bannai \cite{EtBannai}. The lower bound $2n$ for the number of points of a degree-$3$ cubature formula for a centrally symmetric measure is a case of M\"oller's bound \cite{Moller}. Theorem~\ref{thm:simplex} for $n\ge4$ and for unequal weights, Theorem~\ref{thm:fourth} for $n\ge3$, and Theorem~\ref{thm:cross} for $n\ge3$ are new; Theorems~\ref{thm:simplex} and~\ref{thm:fourth} can also be derived from \cite[Theorem~5.1]{BBS}. Lemma~\ref{lem:antipodal} describes the formulas that attain this bound. The negative answer to (Q) also follows from unit-norm tight frames and from the designs of Bajnok \cite{Bajnok}; Proposition~\ref{prop:cube} gives an explicit rational family that is not centrally symmetric.
+
+\section*{Funding}
+The research presented in this paper was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant 4101/25).
+
+\section*{Acknowledgments}
+This work was done by Claude (Anthropic) and Codex (OpenAI) agents, connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, which many Claude (Anthropic) and Codex (OpenAI) agents build and use. The framework is a shared, persistent memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and audit each other's work. For more on the Brain and Math Brain, see the Math Brain paper~\cite{MathBrainPaper}.
+
+\section*{Code and data availability}
+The check script and its output are at \url{https://github.com/yspennstate/powered-distance-sums-simplex-cross-polytope/tree/eefea449be965f342bfd4e01ab7c58f7eb2873be} (tag checks-v1). The paper is part of the Math Brain project, whose public repository is \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+This paper is part of a broader research project on AI systems proving mathematical results. The proofs were found by Codex (OpenAI); the checks, the comparison with the literature and the text were produced by Claude (Anthropic). The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+
+\section*{Declaration of competing interest}
+The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are included in the funding declaration above.
+
+\appendix
+\section{Notation}\label{app:notation}
+\begin{center}
+\begin{tabular}{lp{8.4cm}l}
+\toprule
+Symbol & Meaning & First use\\
+\midrule
+$N$, $A_i$, $a_i$ & number of points, the points, their position vectors & Section~\ref{sec:intro}\\
+$S_\lambda$, $S^w_\lambda$ & sum (weighted sum) of $\lambda$-th powers of distances from $M$ & Section~\ref{sec:intro}\\
+$\Gamma$, $O$, $R$ & the sphere, its centre (the origin) and radius & Section~\ref{sec:intro}\\
+$w_i$ & positive weights & Section~\ref{sec:intro}\\
+$\rho_i$ & $R^2+|a_i|^2$ & Section~\ref{sec:moments}\\
+$c$, $T(u)$ & the vector $\sum_iw_i\rho_i^2a_i$; the cubic form $\sum_iw_i(u\cdot a_i)^3$ & Section~\ref{sec:moments}\\
+$\gamma$, $\eta$ & scalars with $\sum w_ia_ia_i^{\top}=\gamma I$, $\sum w_i|a_i|^2a_ia_i^{\top}=\eta I$ & Lemma~\ref{lem:moments}\\
+$\Delta$ & the Laplacian $\sum_k\partial^2/\partial u_k^2$ & Lemma~\ref{lem:moments}\\
+$B$, $s$, $r$, $V$ & matrix with columns $\sqrt{w_i}a_i$ (or $a_i$); unit vector spanning $\ker B$; common length; $\sum_j\rho_j^2$ & Section~\ref{sec:simplex}\\
+$x^{\perp}$ & orthogonal complement of $x$ & Section~\ref{sec:simplex}\\
+$P_\pm$ & the two halves of the Hessian of $T$ & Lemma~\ref{lem:antipodal}\\
+$u_j$, $v_j$ & directions of the $n$ lines and the dual basis & Section~\ref{sec:cross}\\
+$E$, $Q$, $X$ & $\{-1,1\}^{n-1}$, a rational rotation, the twisted cube & Proposition~\ref{prop:cube}\\
+$\otimes$ & tensor product & Proposition~\ref{prop:cube}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{99}
+\bibitem{Bajnok} B.~Bajnok, Constructions of spherical $3$-designs, Graphs Combin. 14 (1998) 97--107; arXiv:2404.15544.
+\bibitem{BBS} Ei.~Bannai, Et.~Bannai and D.~Suprijanto, On the strong non-rigidity of certain tight Euclidean designs, European J. Combin. 28 (2007) 1662--1680; arXiv:1708.05524.
+\bibitem{EtBannai} Et.~Bannai, On antipodal Euclidean tight $(2e+1)$-designs, J. Algebraic Combin. 24 (2006) 391--414.
+\bibitem{DGS} P.~Delsarte, J.~M.~Goethals and J.~J.~Seidel, Spherical codes and designs, Geom. Dedicata 6 (1977) 363--388.
+\bibitem{Moller} H.~M.~M\"oller, Lower bounds for the number of nodes in cubature formulae, in: Numerische Integration, Internat. Ser. Numer. Math. 45, Birkh\"auser, Basel, 1979, 221--230.
+\bibitem{HinrichsNovak} A.~Hinrichs and E.~Novak, Cubature formulas for symmetric measures in higher dimensions with few points, Math. Comp. 76 (2007) 1357--1372.
+\bibitem{NeumaierSeidel} A.~Neumaier and J.~J.~Seidel, Discrete measures for spherical designs, eutactic stars and lattices, Indag. Math. 50 (1988) 321--334.
+\bibitem{NR} N.~Nikolov and R.~Rafailov, On extremums of sums of powered distances to a finite set of points, arXiv:1211.2975, 2012; Geom. Dedicata 167 (2013) 69--89.
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public/tree/5427734deee9be643d6dfbdd5e7d4baeeefe4a4a}.
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/5427734deee9be643d6dfbdd5e7d4baeeefe4a4a/papers/math-brain-2026-10-24}.
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public/tree/46b935d26d5a2893f7790b60466387dd8da47ef5}.
+\end{thebibliography}
+\end{document}
