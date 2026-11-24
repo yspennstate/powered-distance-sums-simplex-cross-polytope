@@ -1,0 +1,26 @@
+(1) twisted cube
+  d=3 sites 8 distinct True centrally-symmetric False  k=1,2,3 constant on 4 concentric spheres: True  (k=4 distinct values: 12)
+     exact: radii [Fraction(3, 1)], first moment 0 True, second moment scalar True (=8), third moment tensor 0 True
+  d=4 sites 16 distinct True centrally-symmetric False  k=1,2,3 constant on 4 concentric spheres: True  (k=4 distinct values: 12)
+     exact: radii [Fraction(4, 1)], first moment 0 True, second moment scalar True (=16), third moment tensor 0 True
+  d=5 sites 32 distinct True centrally-symmetric False  k=1,2,3 constant on 4 concentric spheres: True  (k=4 distinct values: 12)
+     exact: radii [Fraction(5, 1)], first moment 0 True, second moment scalar True (=32), third moment tensor 0 True
+(2) d+1 points, lambda=2,4 and lambda=4 alone
+  d=3 lams=(2, 4) starts=12 zero-residual 2, of which NOT a centred regular simplex (and distinct): 0
+  d=3 lams=(4,) starts=12 zero-residual 8, of which NOT a centred regular simplex (and distinct): 0
+  d=4 lams=(2, 4) starts=12 zero-residual 1, of which NOT a centred regular simplex (and distinct): 0
+  d=4 lams=(4,) starts=12 zero-residual 1, of which NOT a centred regular simplex (and distinct): 0
+  d=5 lams=(2, 4) starts=12 zero-residual 2, of which NOT a centred regular simplex (and distinct): 0
+  d=5 lams=(4,) starts=12 zero-residual 8, of which NOT a centred regular simplex (and distinct): 0
+(3) 2d points, lambda=2,4,6
+  d=3 starts=12 zero-residual 2, distinct and NOT a centred regular cross-polytope: 0
+     min residual over starts 2.52e-14, median 1.20e-08
+  d=4 starts=12 zero-residual 0, distinct and NOT a centred regular cross-polytope: 0
+     min residual over starts 1.72e-09, median 5.64e-08
+(4) controls
+  regular simplex d=4: osc lam2 7.1e-15 lam4 2.5e-14
+  one vertex scaled by 1.01: osc lam2 3.4e-02 lam4 2.4e-01
+  cross-polytope d=4: osc lam2,4,6 7.1e-15 4.3e-14 1.7e-13; lam8 2.2e+01
+  one vertex scaled: osc lam6 1.9e+00
+  weighted 4th-power simplex, radii [0.6 0.9 1.  1.3 1.7] weights [0.4566 0.2129 0.1728 0.101  0.0566]
+     weighted osc lam4 6.2e-15 (constant), unweighted osc lam4 4.2e+01, weighted osc lam2 6.1e-01 (not constant)
